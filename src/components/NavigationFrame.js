@@ -44,6 +44,7 @@ import { MonetizationOn, OpenInNew } from '@material-ui/icons';
 import AddCustomClusterDialog from './AddCustomClusterDialog';
 
 const useStyles = makeStyles((theme) => ({
+  
   content: {
     flexGrow: 1,
     paddingBottom: theme.spacing(3),
@@ -96,7 +97,7 @@ export default function NavigationFrame({ children }) {
         )}
         <Toolbar>
           <Typography variant="h6" className={classes.title} component="h1">
-            {isExtensionWidth ? 'Sollet' : 'Solana SPL Token Wallet'}
+            {isExtensionWidth ? 'Sollet' : 'ITSC Wallet'}
           </Typography>
           <NavigationButtons />
         </Toolbar>
@@ -359,7 +360,7 @@ function WalletSelector() {
           onClick={(e) => setAnchorEl(e.target)}
           className={classes.button}
         >
-          Account
+          Cuenta
         </Button>
       </Hidden>
       <Hidden smUp>
@@ -403,7 +404,7 @@ function WalletSelector() {
           <ListItemIcon className={classes.menuItemIcon}>
             <UsbIcon fontSize="small" />
           </ListItemIcon>
-          Import Hardware Wallet
+          Importar Hardware Wallet
         </MenuItem>
         <MenuItem
           onClick={() => {
@@ -414,7 +415,7 @@ function WalletSelector() {
           <ListItemIcon className={classes.menuItemIcon}>
             <AddIcon fontSize="small" />
           </ListItemIcon>
-          Add Account
+          Agregar Cuenta
         </MenuItem>
         <MenuItem
           onClick={() => {
@@ -425,7 +426,7 @@ function WalletSelector() {
           <ListItemIcon className={classes.menuItemIcon}>
             <ImportExportIcon fontSize="small" />
           </ListItemIcon>
-          Export Mnemonic
+          Exportar Mnemonic
         </MenuItem>
         <MenuItem
           onClick={() => {
@@ -436,7 +437,7 @@ function WalletSelector() {
           <ListItemIcon className={classes.menuItemIcon}>
             <ExitToApp fontSize="small" />
           </ListItemIcon>
-          {'Delete Mnemonic & Log Out'}
+          {'Borrar Mnemonic & Log Out'}
         </MenuItem>
       </Menu>
     </>

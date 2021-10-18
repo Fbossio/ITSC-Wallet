@@ -47,7 +47,7 @@ export default function LoginPage() {
           {hasLockedMnemonicAndSeed ? <LoginForm /> : <CreateWalletForm />}
           <br />
           <Link style={{ cursor: 'pointer' }} onClick={() => setRestore(true)}>
-            Restore existing wallet
+            Restaurar wallet existente
           </Link>
         </>
       )}
@@ -73,8 +73,8 @@ function CreateWalletForm() {
         DERIVATION_PATH.bip44Change,
       ),
       {
-        progressMessage: 'Creating wallet...',
-        successMessage: 'Wallet created',
+        progressMessage: 'Creando wallet...',
+        successMessage: 'Wallet creada',
       },
     );
   }
@@ -117,14 +117,14 @@ function SeedWordsForm({ mnemonicAndSeed, goForward }) {
       <Card>
         <CardContent>
           <Typography variant="h5" gutterBottom>
-            Create New Wallet
+            Crear Nueva Wallet
           </Typography>
           <Typography paragraph>
-            Create a new wallet to hold Solana and SPL tokens.
+            Crea una nueva wallet para guardar Solana y SPL tokens.
           </Typography>
           <Typography>
-            Please write down the following twenty four words and keep them in a
-            safe place:
+            Copia la siguiente clave mnemónica y guárdala en un lugar seguro:
+            
           </Typography>
           {mnemonicAndSeed ? (
             <TextField
@@ -140,15 +140,11 @@ function SeedWordsForm({ mnemonicAndSeed, goForward }) {
             <LoadingIndicator />
           )}
           <Typography paragraph>
-            Your private keys are only stored on your current computer or device.
-            You will need these words to restore your wallet if your browser's
-            storage is cleared or your device is damaged or lost.
+            Tu clave privada solo será almacenada en tu equipo. La clave mnemónica
+            será necesaria para restaurar tu wallet si el almacenamiento de tu navegador
+            es limpiado, o si tu equipo se daña o pierde.             
           </Typography>
-          <Typography paragraph>
-            By default, sollet will use <code>m/44'/501'/0'/0'</code> as the
-            derivation path for the main wallet. To use an alternative path, try
-            restoring an existing wallet.
-          </Typography>
+          
           <FormControlLabel
             control={
               <Checkbox
@@ -157,20 +153,20 @@ function SeedWordsForm({ mnemonicAndSeed, goForward }) {
                 onChange={(e) => setConfirmed(e.target.checked)}
               />
             }
-            label="I have saved these words in a safe place."
+            label="He guardado la clave mnemónica"
           />
           <Typography paragraph>
           <Button variant="contained" color="primary" style={{ marginTop: 20 }} onClick={() => {
             downloadMnemonic(mnemonicAndSeed?.mnemonic);
             setDownloaded(true);
           }}>
-            Download Backup Mnemonic File (Required)
+            Descargar frase mnemónica (Requerido)
           </Button>
           </Typography>
         </CardContent>
         <CardActions style={{ justifyContent: 'flex-end' }}>
           <Button color="primary" disabled={!confirmed || !downloaded} onClick={() => setShowDialog(true)}>
-            Continue
+            Continuar
           </Button>
         </CardActions>
       </Card>
@@ -188,7 +184,8 @@ function SeedWordsForm({ mnemonicAndSeed, goForward }) {
               flexDirection: 'column',
             }}
           >
-            Please re-enter your seed phrase to confirm that you have saved it.
+            Por favor re ingresa tu clave mnemónica para confirmar que la has guardado.
+            
           </div>
           <TextField
             label={`Please type your seed phrase to confirm`}
@@ -222,10 +219,10 @@ function ChoosePasswordForm({ goBack, onSubmit }) {
     <Card>
       <CardContent>
         <Typography variant="h5" gutterBottom>
-          Choose a Password (Optional)
+          Ingresa una contraseña (Opcional)
         </Typography>
         <Typography>
-          Optionally pick a password to protect your wallet.
+          Opcionalmente ingresa una contraseña para proteger tu wallet
         </Typography>
         <TextField
           variant="outlined"
@@ -248,8 +245,9 @@ function ChoosePasswordForm({ goBack, onSubmit }) {
           onChange={(e) => setPasswordConfirm(e.target.value)}
         />
         <Typography>
-          If you forget your password you will need to restore your wallet using
-          your seed words.
+          Si olvidas tu contraseña será necesario ingresar tu clave mnemónica para
+          restaurar tu wallet. 
+          
         </Typography>
       </CardContent>
       <CardActions style={{ justifyContent: 'space-between' }}>
@@ -259,7 +257,7 @@ function ChoosePasswordForm({ goBack, onSubmit }) {
           disabled={password !== passwordConfirm}
           onClick={() => onSubmit(password)}
         >
-          Create Wallet
+          Crear Wallet
         </Button>
       </CardActions>
     </Card>
@@ -273,8 +271,8 @@ function LoginForm() {
 
   const submit = () => {
     callAsync(loadMnemonicAndSeed(password, stayLoggedIn), {
-      progressMessage: 'Unlocking wallet...',
-      successMessage: 'Wallet unlocked',
+      progressMessage: 'Desbloquear wallet...',
+      successMessage: 'Wallet desbloqueada',
     });
   }
   const submitOnEnter = (e) => {
@@ -291,7 +289,7 @@ function LoginForm() {
     <Card>
       <CardContent>
         <Typography variant="h5" gutterBottom>
-          Unlock Wallet
+          Desbloquear Wallet
         </Typography>
         <TextField
           variant="outlined"
@@ -311,12 +309,12 @@ function LoginForm() {
               onChange={toggleStayLoggedIn}
             />
           }
-          label="Keep wallet unlocked"
+          label="Mantener desbloqueada la wallet"
         />
       </CardContent>
       <CardActions style={{ justifyContent: 'flex-end' }}>
         <Button color="primary" onClick={submit}>
-          Unlock
+          Desbloquear
         </Button>
       </CardActions>
     </Card>
@@ -347,20 +345,21 @@ function RestoreWalletForm({ goBack }) {
         <Card>
           <CardContent>
             <Typography variant="h5" gutterBottom>
-              Restore Existing Wallet
+              Restaurar Wallet Existente
             </Typography>
             <Typography>
-              Restore your wallet using your twelve or twenty-four seed words.
-              Note that this will delete any existing wallet on this device.
+              Restaura tu wallet usando la clave mnemónica. Ten en cuenta que
+              esta acción eliminará cualquier otra wallet existente en este equipo.
+              
             </Typography>
             <br />
             <Typography fontWeight="fontWeightBold">
-              <b>Do not enter your hardware wallet seedphrase here.</b> Hardware
-              wallets can be optionally connected after a web wallet is created.
+              <b>No ingreses la clave de tu hardware wallet aquí.</b> La hardware wallet puede conectarse 
+              opcionalemente, luego de que ty¡u wallet se haya creado.
             </Typography>
             {displayInvalidMnemonic && (
                <Typography fontWeight="fontWeightBold" style={{ color: 'red' }}>
-                 Mnemonic validation failed. Please enter a valid BIP 39 seed phrase.
+                 La validación de tu clave mnemónica falló. Ingresa una clave BIP 39 válida.                
                </Typography>
             )}
             <TextField

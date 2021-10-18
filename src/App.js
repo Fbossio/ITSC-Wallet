@@ -26,7 +26,7 @@ import LoginPage from './pages/LoginPage';
 import ConnectionsPage from './pages/ConnectionsPage';
 import { isExtension } from './utils/utils';
 import { PageProvider, usePage } from './utils/page';
-
+import { indigo } from '@material-ui/core/colors';
 export default function App() {
   // TODO: add toggle for dark mode
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
@@ -35,7 +35,7 @@ export default function App() {
       createMuiTheme({
         palette: {
           type: prefersDarkMode ? 'dark' : 'light',
-          primary: blue,
+          primary: indigo,
         },
         // TODO consolidate popup dimensions
         ext: '450',
