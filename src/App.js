@@ -12,7 +12,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import DialogForm from './components/DialogForm';
+//import DialogForm from './components/DialogForm';
 import NavigationFrame from './components/NavigationFrame';
 import { ConnectionProvider } from './utils/connection';
 import WalletPage from './pages/WalletPage';
@@ -87,9 +87,10 @@ function PageContents() {
   const [showWalletSuggestion, setShowWalletSuggestion] = useState(true);
   const suggestionKey = 'private-irgnore-wallet-suggestion';
   const ignoreSuggestion = window.localStorage.getItem(suggestionKey);
+  
   if (!wallet) {
     return (
-      <>
+      <>  {/* 
         {!ignoreSuggestion && (
           <WalletSuggestionDialog
             open={showWalletSuggestion}
@@ -99,14 +100,18 @@ function PageContents() {
               setShowWalletSuggestion(false);
             }}
           />
-        )}
+        )} */}
         <LoginPage />
       </>
     );
   }
+  
+  
   if (window.opener) {
     return <PopupPage opener={window.opener} />;
   }
+  
+  
   if (page === 'wallet') {
     return <WalletPage />;
   } else if (page === 'connections') {
@@ -124,6 +129,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
+/*
 function WalletSuggestionDialog({ open, onClose, onIgnore }) {
   const classes = useStyles();
   return (
@@ -222,3 +228,4 @@ function WalletSuggestionDialog({ open, onClose, onIgnore }) {
     </DialogForm>
   );
 }
+*/
