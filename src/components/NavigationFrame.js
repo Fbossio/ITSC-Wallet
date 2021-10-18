@@ -86,11 +86,12 @@ export default function NavigationFrame({ children }) {
               paddingRight: '24px',
               fontSize: '14px',
             }}
-          >
+          > {/* 
             <Typography>
               Beware of sites attempting to impersonate sollet.io or other DeFi
               services.
             </Typography>
+            */}
           </div>
         )}
         <Toolbar>

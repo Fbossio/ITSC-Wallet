@@ -7,11 +7,11 @@ import {
   unstable_createMuiStrictModeTheme as createMuiTheme,
 } from '@material-ui/core/styles';
 import blue from '@material-ui/core/colors/blue';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogActions from '@material-ui/core/DialogActions';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+//import DialogTitle from '@material-ui/core/DialogTitle';
+//import DialogContent from '@material-ui/core/DialogContent';
+//import DialogActions from '@material-ui/core/DialogActions';
+//import Button from '@material-ui/core/Button';
+//import Typography from '@material-ui/core/Typography';
 //import DialogForm from './components/DialogForm';
 import NavigationFrame from './components/NavigationFrame';
 import { ConnectionProvider } from './utils/connection';
